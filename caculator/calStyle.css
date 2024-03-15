@@ -61,22 +61,11 @@ button:active {
     background-color: hsl(35, 100%, 75%);
 }
 #text {
-    display: hidden;
+    /*   */
     
     color: aliceblue;
     align-items: center;
     text-align: center;
     font-size: 20px;
     height: 25px;
-}
-
-#button1 {
-    height: 500px;
-    width: 500px;
-    color: white;
-    text-align: center;
-    align-items: center;
-    background-color: red;
-
-
 }
