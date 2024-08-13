@@ -7,84 +7,45 @@ const rock = document.getElementById('Rock');
 const paper = document.getElementById('Papper');
 const Sicssor = document.getElementById('Sicssor');
 
+const matrix = [[0,-1,1] 
+              , [1,0,-1] ,
+                [-1,1,0]];
+const arrItem = [rock , paper , Sicssor];
 flag = false;
-
-function desice(input) {
-    let random = Math.floor(Math.random()* choice.length);
-    ComputerView.textContent += choice[random];
-    switch (input) {
-        case 'Rock':
-            if (choice[random] == 'Rock') {
-                rock.style.backgroundColor = "red";
-                resultView.textContent += "Hòa";
-            }
-            else if (choice[random] == 'Papper') {
-                paper.style.backgroundColor = "red";
-                resultView.textContent += "Thua";
-            }
-            else {
-                Sicssor.style.backgroundColor = "red";
-                resultView.textContent += "Thắng";
-            }
-            break;
-        case 'Papper':
-            if (choice[random] == 'Papper') {
-                paper.style.backgroundColor = "red";
-                resultView.textContent += "Hòa";
-            }
-            else if (choice[random] == 'Sicssor') {
-                Sicssor.style.backgroundColor = "red";
-                resultView.textContent += "Thua";
-            }
-            else {
-                rock.style.backgroundColor = "red";
-                resultView.textContent += "Thắng";
-            }
-            break;
-        case 'Sicssor':
-            if (choice[random] == 'Sicssor') {
-                Sicssor.style.backgroundColor = "red";
-                resultView.textContent += "Hòa";
-            }
-            else if (choice[random] == 'Rock') {
-                rock.style.backgroundColor = "red";
-                resultView.textContent += "Thua";
-            }
-            else {
-                paper.style.backgroundColor = "red";
-                resultView.textContent += "Thắng";
-            }
-            break;
-    }
+function desice (num) {
+   if(!flag) {
+     // set background color for user choose item !
+     arrItem[num].style.backgroundColor = "green";
+     userView.textContent += arrItem[num].textContent;
+     // machine choose item 
+     let random = Math.floor(Math.random()* choice.length);
+     arrItem[random].style.backgroundColor = "red";
+     ComputerView.textContent += arrItem[random].textContent;
+     // 
+ 
+     if(matrix[num][random] == 0) {
+         resultView.textContent = "Hòa";
+     }
+     else if(matrix[num][random] == 1) {
+         resultView.textContent = "Thắng";
+     }
+     else {
+         resultView.textContent = "Thua";
+     }
+     flag = true;
+   }
 }
-function playGame(input) {
 
-    switch (input) {
-        case 'Rock':
-            if (!flag) {
-                rock.style.backgroundColor = "Green";
-                userView.textContent += input;
-                flag = true;
-                desice(input);
-            }
-            break;
-        case 'Papper':
-            if (!flag) {
-                paper.style.backgroundColor = "Green";
-                userView.textContent += input;
-                flag = true;
-                desice(input);
-            }
-            break;
-
-        case 'Sicssor':
-            if (!flag) {
-                Sicssor.style.backgroundColor = "Green";
-                userView.textContent += input;
-                flag = true;
-                desice(input);
-            }
-            break;
-
-    }
+function reset() {
+    // reset color 
+    const Bitem = "hsl(200, 100%, 50%)";
+    rock.style.backgroundColor = Bitem;
+    paper.style.backgroundColor = Bitem;
+    Sicssor.style.backgroundColor = Bitem;
+    // reset text 
+    resultView.textContent = "result :";
+    userView.textContent = "User choose: ";
+    ComputerView.textContent = "computer choose:";
+    // reset flag 
+    flag = false;
 }

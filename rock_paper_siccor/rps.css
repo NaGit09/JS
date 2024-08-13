@@ -2,6 +2,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     font-family: Arial, sans-serif;
     font-weight: bold;
@@ -11,6 +12,16 @@ h1 {
     font-size: 3.5rem;
     color: hsl(0, 0, 20%);
 
+}
+.reset {
+    background-color: aqua;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    margin: 10px auto;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
 .choice {
 margin-bottom: 30px;
